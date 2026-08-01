@@ -184,6 +184,15 @@
     .brand{display:none;}
   }
   @media (prefers-reduced-motion:reduce){.deck{scroll-behavior:auto;}.hud .hint .swipe{animation:none;}}
+
+.dashboard-overview{display:grid;grid-template-columns:2fr 1fr;gap:26px;margin-top:24px}
+.rank-panel,.insight-panel{background:var(--cinza);border:1px solid var(--cinza-borda);border-radius:14px;padding:20px}
+.rank-item{display:grid;grid-template-columns:170px 1fr 42px;gap:10px;align-items:center;margin:10px 0}
+.rank-track{height:14px;background:#d9e0e8;border-radius:10px;overflow:hidden}
+.rank-fill{height:100%;background:var(--azul);border-radius:10px}
+.rank-item:first-child .rank-fill{background:var(--vermelho)}
+.insight-panel h3{color:var(--azul);margin-bottom:12px}
+.insight-panel li{margin:12px 0;line-height:1.5}
 </style>
 </head>
 <body>
@@ -212,7 +221,22 @@
         <div class="metric red"><div class="val">15,3%</div><div class="lbl">Chegadas em atraso</div><div class="sub">47 coletas</div></div>
         <div class="metric"><div class="val">2h50</div><div class="lbl">Permanência média Scania</div><div class="sub">Fornecedor: 2h06</div></div>
       </div>
-      <p class="lead" style="margin-top:26px;">A pontualidade nas coletas foi alta no início do período e piorou na semana seguinte. O tempo de permanência na Scania (descarga) é, em média, superior ao tempo gasto no fornecedor.</p>
+      <div class="dashboard-overview">
+<div class="rank-panel">
+<div class="chart-title">Top 10 Fornecedores</div>
+<div class="chart-sub">Maior volume de coletas</div>
+<div class="rank-item"><div>Indústria Auto</div><div class="rank-track"><div class="rank-fill" style="width:100%"></div></div><strong>100</strong></div><div class="rank-item"><div>Jardim Sistemas</div><div class="rank-track"><div class="rank-fill" style="width:79%"></div></div><strong>79</strong></div><div class="rank-item"><div>IPA</div><div class="rank-track"><div class="rank-fill" style="width:68%"></div></div><strong>68</strong></div><div class="rank-item"><div>Ficosa</div><div class="rank-track"><div class="rank-fill" style="width:63%"></div></div><strong>63</strong></div><div class="rank-item"><div>Mauser</div><div class="rank-track"><div class="rank-fill" style="width:57%"></div></div><strong>57</strong></div><div class="rank-item"><div>Metalac</div><div class="rank-track"><div class="rank-fill" style="width:53%"></div></div><strong>53</strong></div><div class="rank-item"><div>Polistampo</div><div class="rank-track"><div class="rank-fill" style="width:49%"></div></div><strong>49</strong></div><div class="rank-item"><div>Boge</div><div class="rank-track"><div class="rank-fill" style="width:44%"></div></div><strong>44</strong></div><div class="rank-item"><div>S Riko</div><div class="rank-track"><div class="rank-fill" style="width:31%"></div></div><strong>31</strong></div><div class="rank-item"><div>Uliana</div><div class="rank-track"><div class="rank-fill" style="width:30%"></div></div><strong>30</strong></div></div>
+<div class="insight-panel">
+<h3>Resumo Executivo</h3>
+<ul>
+<li><strong>308</strong> coletas realizadas.</li>
+<li><strong>84,7%</strong> chegaram no prazo.</li>
+<li>Top 10 concentram aproximadamente <strong>78%</strong> da operação.</li>
+<li>Permanência média na Scania: <strong>2h50</strong>.</li>
+<li>Priorizar os maiores fornecedores gera maior impacto operacional.</li>
+</ul>
+</div>
+</div>
     </div>
   </section>
 
