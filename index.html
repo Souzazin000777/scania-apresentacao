@@ -201,6 +201,11 @@
   }
   @media (prefers-reduced-motion:reduce){.deck{scroll-behavior:auto;}.hud .hint .swipe{animation:none;}}
 
+/* slide 06: evita que o gráfico invada o título */
+.slide-06 h1{position:relative;z-index:2;margin-bottom:10px;}
+.slide-06 .body{justify-content:flex-start;padding-top:6px;}
+.slide-06 .chart-wrap svg{max-height:52vh;display:block;}
+
 .dashboard-overview{display:grid;grid-template-columns:2fr 1fr;gap:26px;margin-top:24px}
 .rank-panel,.insight-panel{background:var(--cinza);border:1px solid var(--cinza-borda);border-radius:14px;padding:20px}
 .rank-item{display:grid;grid-template-columns:170px 1fr 42px;gap:10px;align-items:center;margin:10px 0}
@@ -256,46 +261,9 @@
     </div>
   </section>
 
-  <!-- 3 CHEGADAS: NO PRAZO x ATRASO -->
-  <section class="slide">
-    <div class="eyebrow"><span class="num">02</span> Chegadas · no prazo × atraso</div>
-    <h1>Pontualidade das coletas</h1>
-    <div class="body">
-      <div class="split">
-        <div class="chart-wrap">
-          <div class="chart-title">Distribuição geral</div>
-          <div class="chart-sub">308 coletas · 23 a 31/07</div>
-          <div class="donut-box">
-            <svg class="donut" width="180" height="180" viewBox="0 0 42 42" aria-label="84,7% no prazo, 15,3% atraso">
-              <circle cx="21" cy="21" r="15.9" fill="none" stroke="var(--cinza-borda)" stroke-width="6"/>
-              <!-- no prazo 84.7% -->
-              <circle cx="21" cy="21" r="15.9" fill="none" stroke="var(--verde)" stroke-width="6" data-donut
-                      stroke-dasharray="84.7 15.3" stroke-dashoffset="25" stroke-linecap="butt"/>
-              <!-- atraso 15.3% -->
-              <circle cx="21" cy="21" r="15.9" fill="none" stroke="var(--vermelho)" stroke-width="6" data-donut
-                      stroke-dasharray="15.3 84.7" stroke-dashoffset="-59.7" stroke-linecap="butt"/>
-              <text x="21" y="20" text-anchor="middle" font-size="7" font-weight="800" fill="#0f2a52">84,7%</text>
-              <text x="21" y="26" text-anchor="middle" font-size="3.4" fill="#5b6675">no prazo</text>
-            </svg>
-            <div class="donut-legend">
-              <div class="leg"><span class="dot" style="background:var(--verde)"></span><div><span class="n">261</span> no prazo<small>84,7% das coletas</small></div></div>
-              <div class="leg"><span class="dot" style="background:var(--vermelho)"></span><div><span class="n">47</span> em atraso<small>15,3% das coletas</small></div></div>
-            </div>
-          </div>
-        </div>
-        <ul class="note-list">
-          <li>A meta de pontualidade se manteve <b>acima de 90%</b> nos primeiros quatro dias.</li>
-          <li class="red">A partir de <b class="red">29/07</b>, o atraso saltou para <b class="red">20% a 25%</b> das coletas do dia.</li>
-          <li>Os três últimos dias concentram <b>32 dos 47 atrasos</b> do período (68%).</li>
-          <li>Fornecedores recorrentes em atraso: <b>Prima Sole, Plascar e Pelzer</b>.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
   <!-- 4 EVOLUÇÃO DIÁRIA -->
   <section class="slide">
-    <div class="eyebrow"><span class="num">03</span> Evolução diária</div>
+    <div class="eyebrow"><span class="num">02</span> Evolução diária</div>
     <h1>Pontualidade por dia</h1>
     <div class="body">
       <div class="chart-wrap">
@@ -353,7 +321,7 @@
 
   <!-- 5 PERMANÊNCIA NO FORNECEDOR -->
   <section class="slide">
-    <div class="eyebrow"><span class="num">04</span> Tempo de permanência · fornecedor</div>
+    <div class="eyebrow"><span class="num">03</span> Tempo de permanência · fornecedor</div>
     <h1>Quanto tempo no fornecedor</h1>
     <div class="body">
       <div class="split">
@@ -397,7 +365,7 @@
 
   <!-- 6 PERMANÊNCIA NO RECEBIMENTO: SCANIA x LCB -->
   <section class="slide">
-    <div class="eyebrow"><span class="num">05</span> Tempo de permanência · recebimento</div>
+    <div class="eyebrow"><span class="num">04</span> Tempo de permanência · recebimento</div>
     <h1>Recebimento: Scania × LCB</h1>
     <div class="body">
       <div class="dual-loc">
@@ -474,55 +442,66 @@
   </section>
 
   <!-- 7 COMPARATIVO PERMANÊNCIA -->
-  <section class="slide">
-    <div class="eyebrow"><span class="num">06</span> Fornecedor × recebimento</div>
+  <section class="slide slide-06">
+    <div class="eyebrow"><span class="num">05</span> Fornecedor × recebimento</div>
     <h1>Onde o tempo é perdido</h1>
     <div class="body">
       <div class="chart-wrap">
-        <div class="chart-title">Permanência média por dia — fornecedor × recebimento</div>
+        <div class="chart-title">Permanência média por dia — fornecedor × Scania × LCB</div>
         <div class="chart-sub">Em horas · quanto menor, melhor</div>
-        <svg width="100%" viewBox="0 0 720 300" preserveAspectRatio="xMidYMid meet">
+        <svg width="100%" viewBox="0 0 720 290" preserveAspectRatio="xMidYMid meet">
+          <!-- grade: 0-4h, base y=250, 50px/h -->
           <line x1="40" y1="250" x2="700" y2="250" stroke="var(--cinza-borda)" stroke-width="1.5"/>
           <line x1="40" y1="150" x2="700" y2="150" stroke="var(--cinza-borda)" stroke-width=".7" stroke-dasharray="4 4"/>
+          <line x1="40" y1="50"  x2="700" y2="50"  stroke="var(--cinza-borda)" stroke-width=".7" stroke-dasharray="4 4"/>
           <text x="34" y="253" text-anchor="end" font-size="10" fill="#5b6675">0h</text>
+          <text x="34" y="203" text-anchor="end" font-size="10" fill="#5b6675">1h</text>
           <text x="34" y="153" text-anchor="end" font-size="10" fill="#5b6675">2h</text>
+          <text x="34" y="103" text-anchor="end" font-size="10" fill="#5b6675">3h</text>
           <text x="34" y="53"  text-anchor="end" font-size="10" fill="#5b6675">4h</text>
-          <line x1="40" y1="50" x2="700" y2="50" stroke="var(--cinza-borda)" stroke-width=".7" stroke-dasharray="4 4"/>
           <g font-family="Segoe UI" font-size="11">
-            <!-- 23: 2.05/2.79 -->
-            <rect x="58"  y="147.5" width="20" height="102.5" fill="#0f2a52"/>
-            <rect x="80"  y="110.5" width="20" height="139.5" fill="#c8102e"/>
-            <text x="79" y="268" text-anchor="middle" fill="#5b6675">23</text>
-            <!-- 24: 2.65/2.27 -->
-            <rect x="150" y="117.5" width="20" height="132.5" fill="#0f2a52"/>
-            <rect x="172" y="136.5" width="20" height="113.5" fill="#c8102e"/>
-            <text x="171" y="268" text-anchor="middle" fill="#5b6675">24</text>
-            <!-- 27: 1.99/1.95 -->
-            <rect x="242" y="150.5" width="20" height="99.5" fill="#0f2a52"/>
-            <rect x="264" y="152.5" width="20" height="97.5" fill="#c8102e"/>
-            <text x="263" y="268" text-anchor="middle" fill="#5b6675">27</text>
-            <!-- 28: 2.19/3.48 -->
-            <rect x="334" y="140.5" width="20" height="109.5" fill="#0f2a52"/>
-            <rect x="356" y="76"    width="20" height="174"   fill="#c8102e"/>
-            <text x="355" y="268" text-anchor="middle" fill="#5b6675">28</text>
-            <!-- 29: 1.66/3.07 -->
-            <rect x="426" y="167"   width="20" height="83"    fill="#0f2a52"/>
-            <rect x="448" y="96.5"  width="20" height="153.5" fill="#c8102e"/>
-            <text x="447" y="268" text-anchor="middle" fill="#5b6675">29</text>
-            <!-- 30: 2.16/3.03 -->
-            <rect x="518" y="142"   width="20" height="108"   fill="#0f2a52"/>
-            <rect x="540" y="98.5"  width="20" height="151.5" fill="#c8102e"/>
-            <text x="539" y="268" text-anchor="middle" fill="#5b6675">30</text>
-            <!-- 31: 2.00/3.21 -->
-            <rect x="610" y="150"   width="20" height="100"   fill="#0f2a52"/>
-            <rect x="632" y="89.5"  width="20" height="160.5" fill="#c8102e"/>
-            <text x="631" y="268" text-anchor="middle" fill="#5b6675">31</text>
+            <!-- 23: forn 2.06 / scania 2.65 / lcb 2.92 -->
+            <rect x="60" y="147.0" width="17" height="103.0" fill="#0f2a52"/>
+            <rect x="79" y="117.5" width="17" height="132.5" fill="#1b3d6e"/>
+            <rect x="98" y="104.0" width="17" height="146.0" fill="#c8102e"/>
+            <text x="88" y="268" text-anchor="middle" fill="#5b6675">23</text>
+            <!-- 24: 3.02 / 2.58 / 1.81 -->
+            <rect x="152" y="99.0"  width="17" height="151.0" fill="#0f2a52"/>
+            <rect x="171" y="121.0" width="17" height="129.0" fill="#1b3d6e"/>
+            <rect x="190" y="159.5" width="17" height="90.5"  fill="#c8102e"/>
+            <text x="180" y="268" text-anchor="middle" fill="#5b6675">24</text>
+            <!-- 27: 2.01 / 1.91 / 2.02 -->
+            <rect x="244" y="149.5" width="17" height="100.5" fill="#0f2a52"/>
+            <rect x="263" y="154.5" width="17" height="95.5"  fill="#1b3d6e"/>
+            <rect x="282" y="149.0" width="17" height="101.0" fill="#c8102e"/>
+            <text x="272" y="268" text-anchor="middle" fill="#5b6675">27</text>
+            <!-- 28: 2.27 / 2.45 / 3.90 -->
+            <rect x="336" y="136.5" width="17" height="113.5" fill="#0f2a52"/>
+            <rect x="355" y="127.5" width="17" height="122.5" fill="#1b3d6e"/>
+            <rect x="374" y="55.0"  width="17" height="195.0" fill="#c8102e"/>
+            <text x="364" y="268" text-anchor="middle" fill="#5b6675">28</text>
+            <!-- 29: 1.74 / 1.81 / 4.10 -->
+            <rect x="428" y="163.0" width="17" height="87.0"  fill="#0f2a52"/>
+            <rect x="447" y="159.5" width="17" height="90.5"  fill="#1b3d6e"/>
+            <rect x="466" y="45.0"  width="17" height="205.0" fill="#c8102e"/>
+            <text x="456" y="268" text-anchor="middle" fill="#5b6675">29</text>
+            <!-- 30: 2.17 / 2.92 / 3.13 -->
+            <rect x="520" y="141.5" width="17" height="108.5" fill="#0f2a52"/>
+            <rect x="539" y="104.0" width="17" height="146.0" fill="#1b3d6e"/>
+            <rect x="558" y="93.5"  width="17" height="156.5" fill="#c8102e"/>
+            <text x="548" y="268" text-anchor="middle" fill="#5b6675">30</text>
+            <!-- 31: 1.92 / 2.17 / 3.23 -->
+            <rect x="612" y="154.0" width="17" height="96.0"  fill="#0f2a52"/>
+            <rect x="631" y="141.5" width="17" height="108.5" fill="#1b3d6e"/>
+            <rect x="650" y="88.5"  width="17" height="161.5" fill="#c8102e"/>
+            <text x="640" y="268" text-anchor="middle" fill="#5b6675">31</text>
           </g>
         </svg>
         <div class="bar-legend">
           <span><i style="background:#0f2a52"></i> Fornecedor</span>
-          <span><i style="background:#c8102e"></i> Recebimento (Scania + LCB)</span>
-          <span style="margin-left:auto;color:var(--vermelho);font-weight:700">O recebimento supera o fornecedor em 6 dos 7 dias</span>
+          <span><i style="background:#1b3d6e"></i> Scania</span>
+          <span><i style="background:#c8102e"></i> LCB</span>
+          <span style="margin-left:auto;color:var(--vermelho);font-weight:700">O LCB dispara a partir de 28/07 (até 4h10 em 29/07)</span>
         </div>
       </div>
     </div>
@@ -530,7 +509,7 @@
 
   <!-- 8 CONCLUSÕES -->
   <section class="slide final">
-    <div class="eyebrow"><span class="num">07</span> Conclusões e ações</div>
+    <div class="eyebrow"><span class="num">06</span> Conclusões e ações</div>
     <h1>O que os dados apontam</h1>
     <div class="insight-grid">
       <div class="insight">
